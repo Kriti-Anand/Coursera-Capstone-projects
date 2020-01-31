@@ -1,0 +1,127 @@
+ Introduction/Business Problem:
+
+
+My idea for the Capstone Project is to show that when driven by venue and location data from FourSquare, alongside data points on location for Toronto  and check how similar it  is to another city , here Brooklyn, NY.
+
+1.	Introduction:
+
+1.1	Background :
+
+A high level approach is as follows:
+
+1. Using wiki page for getting all the boroughs and neighborhood for the Etiboke, Toronto and Brooklyn, NewYork.
+2. The Fore Square website is used to provide top venues in the city by boroughs.
+3. Using this data we can check the 5 most recommended venues for each borough for both the 
+Cities.
+4. We later create a dataset for all the boroughs in the Neighborhood to explore [ Etiboke  and Brooklyn In our use case] with the  most popular venues.
+5. A map is used to represent the places by these clusters.
+6. Future scope of this project is to make comparisons by all /any cities.
+
+1.2	Problem: 
+Comparing between cities of developed countries such New York City in the United States of America and Toronto in Canada and cluster the restaurants in them into categories would give insights about how the market performs in them and also after classifying these restaurants into clusters will give more information about similarities and differences between cities like New York and Toronto.
+
+
+1.3	Users:
+tourists  and Businessman’s can take huge help of this information for knowing more of the city infrastructure. 
+
+	
+2.	Data Cleaning and Acquisition:
+
+2.1	Data Sources:
+New York data are from a json file that was provided during our course, and Toronto data are from table in Wikipedia page which contains list of postcodes in Canada. These data was used with Foursquare API for finding data about restaurants in different 
+neighborhoods and clustering them.          
+
+     
+2.2	Data:
+ In this section, I will describe the data used to solve the problem as described previously.
+As noted below in the Further Development Section, it is possible to attempt quite complex and sophisticated scenarios when approaching this problem. However, given the size of the project and for simplicity only the following scenario will be addressed:
+
+1. Query the FourSqaure website for the top sites in Toronto
+
+2. Use the FourSquare API to get top 5 restaurant recommendations closest to each of the top site 
+Top Sites from FourSquare Website
+Although Foursquare provides a comprehensive API, one of the things that API does not easily support is a mechanism to directly extract the top N sites / venues in a given city. This data, however, is easily available directly from the Foursquare Website. To do this simply go to www.foursquare.com, enter the city of your choice and select Top Picks from _I'm Looking For_ selection field.Using Beautiful Soup and Requests the results of the Top Pick for Toronto was retrieved.
+
+2.3	Data Cleaning:
+ For New York data, after loading the json file which contains data about of 306 neighborhoods, some features are extracted from the json file such as Borough, Neighborhood, Latitude, and longitude. Then, a  for loop is used for filling the neighborhood data frame. Now neighborhood data frame can be used with geocoder to find the latitude and longitudes.
+For Toronto data, after scraping postcodes from list of postcodes of Canada from Wikipedia page, all boroughs and neighborhoods are cleaned up by removing all not assigned values from the table. Also, geocoder library was used for finding the latitude and longitude of neighborhoods in Toronto
+
+
+3.	Data Analysis and Visualization
+
+
+An initial look at the data shows that there are 103 boroughs in Toronto. The dataframe consists of PostalCode, Borough and Neighbourhood.
+We fetched all the geo locations (latitude and longitude data).We notice there is an extra column in the dataset which we remove.We also remove all the rows where the Neighbourhood is ‘Not Assigned’
+Etobicoke Borough:
+This dataset can be download from the 'https://en.wikipedia.org/wiki/List_of_postal_codes_of_Canada:_M' and reflects all the neighbourhood and boroughs in Toronto City A full desription of the data is available on the site.
+4.	
+Methodology
+
+
+Methodology section which represents the main component of the report where you discuss and describe any exploratory data analysis that you did, any inferential statistical testing that you performed, and what machine learnings were used and why.
+Exploratory Data Analysis
+
+The first round of exploratory analysis was to examine the Top Venues and Restaurants Data frames to determine if there was any correlation between variables. Data attributes that could be analyzed were the Latitude and Longitude attributes and their relationship to the venues score. Top Venues was examined.
+Display each of the Top 5 Venues 
+In this section a preview of the type of data that will be displayed to a user of the proposed solution is shown.
+
+For each of the Top 3 boroughs:
+
+1. Recommend uses who want to start a business should open a Coffee shop in East Toronto as its most common venue is a Coffee Shop¶
+2. Recommend uses who want to start a business should open a Clothing store in Scarborough as its most common venue
+3. Recommend uses who want to start a business should open a  Game store in West Toronto and American Restaurant in Central Toronto as its most common venue
+
+It is possible to fully automate this through full iteration but in order to clearly show each of the 5 maps each is generated manually (to a degree).
+
+Process:
+Importing libraries included
+•	numpy to handle data in form of vectors which fasten the computations
+•	pandas to deal with data frames
+•	json library to handle json files
+•	requests library to handle requests
+•	matplotlib for plotting charts
+•	k-means for clustering
+•	folium for map rendering
+Geocoder is used for finding neighborhood and borough with 306 neighborhood
+ 
+Map of Brooklyn is as follows:
+ 
+
+Provided FourSquare credentials with radius specifications to receive requests from the API. The results were in json.
+Categories of the restaurant with latitude and longitude helped in extracting nearby venues which were then encoded using one hot encoding to receive venue grouped by neighborhood and most common venues were retured. Lastly clustering was performed on the venues and represented in different colors.
+ 
+ 
+
+
+
+
+
+
+5.	Modelling
+
+Before we start modeling we need to prepare the data frame to include only numerical data and by removing unneeded columns.
+
+Rather than removing colums from `df` a new `df` called Etobicoke_onehot DataFrame was created with just the required columns. This dataFrame was then processed to remove Categorical Data Types and replace them with One Hot encoding. Finally the Dependant Variables were Normalized.
+
+Five model type were then chosen to be evaluated:
+
+1. KMeans Clustering
+
+6.	Target:
+This is an answer to all the users wanting to know about the neighborhood and the kind of venues that work the best. The want to guide new investors to make informed decisions based on the popularity and likes of the people by region.
+There are many data science aspect of this project including:
+1. Data Acquisition
+2. Data Cleansing
+3. Data Analysis
+4. Machine Learning
+5. Prediction
+
+7.	Conclusion:
+As compared Toronto Clusters there are many similar venues in Brooklyn than in Toronto.
+8.	Future Scope:
+Exploring many more cities to see similarity in venues and thus places in the world.
+	
+
+
+
+ 
